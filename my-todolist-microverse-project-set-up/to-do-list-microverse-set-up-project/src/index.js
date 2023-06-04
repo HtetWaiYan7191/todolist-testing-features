@@ -10,6 +10,13 @@ const storeLocalStorage = (storeTasks) => {
   localStorage.setItem('Tasks', JSON.stringify(storeTasks));
 };
 
+const sortArr = (arr) => {
+  arr.forEach((element, index) => {
+    element.index = index + 1;
+  });
+  return arr;
+};
+
 const showTask = () => {
   taskContainer.innerHTML = '';
   storeTasks.forEach((task, index) => {
@@ -27,7 +34,7 @@ const showTask = () => {
   const remove = (item, index) => {
     item.addEventListener('click', () => {
       storeTasks.splice(index, 1);
-      storeLocalStorage(storeTasks);
+      storeLocalStorage(sortArr(storeTasks));
       showTask();
     });
   };
@@ -84,7 +91,7 @@ const addTask = () => {
     const taskObject = {
       description,
       completed: false,
-      index: storeTasks.length,
+      index: storeTasks.length + 1,
     };
     storeTasks.push(taskObject);
     storeLocalStorage(storeTasks);
