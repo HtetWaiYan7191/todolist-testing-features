@@ -90,9 +90,8 @@ const addTask = () => {
     storeLocalStorage(storeTasks);
     descriptionInput.value = '';
     showTask();
-  }
-  else {
-    alert('Please fill some tasks')
+  } else {
+    alert('Please fill some tasks');
   }
 };
 
